@@ -1,8 +1,24 @@
+import { ReactNode } from "react";
 
-const Alert = () => {
-  return (
-    <div>Alert</div>
-  )
+interface Props {
+  children: ReactNode;
+  onClose: () => void,
 }
 
-export default Alert
+const Alert = ({ children, onClose }: Props) => {
+  return (
+    <div className="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>{children}</strong> You should check in on some of those
+      fields below.
+      <button 
+        onClick={onClose}
+        type="button"
+        className="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+  );
+};
+
+export default Alert;
